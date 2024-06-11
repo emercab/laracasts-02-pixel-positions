@@ -1,3 +1,16 @@
-<a {{ $attributes->merge(['class' => 'px-2 py-1 bg-white/10 hover:bg-white/25 rounded text-xs transition-colors duration-300']) }}>
+@props(['size' => 'md'])
+
+@php
+  $classes = 'py-1 bg-white/10 hover:bg-white/25 rounded-xl font-bold transition-colors duration-300';
+
+  if ($size === 'sm') {
+    $classes .= ' px-2 text-2xs';
+  }
+  elseif ($size === 'md') {
+    $classes .= ' px-5 text-md';
+  }
+@endphp
+
+<a {{ $attributes(['class' => $classes]) }}>
   {{ $slot }}
 </a>
