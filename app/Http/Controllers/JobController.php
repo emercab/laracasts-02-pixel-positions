@@ -14,9 +14,14 @@ class JobController extends Controller
    */
   public function index()
   {
+    $featuredJobs = Job::where('featured', true)->take(6)->get();
+    $recentJobs = Job::orderBy('created_at', 'desc')->take(10)->get();
+    $tags = Tag::take(10)->get();
+
     return view('jobs.index', [
-      'jobs' => Job::all(),
-      'tags' => Tag::all(),
+      'featuredJobs' => $featuredJobs,
+      'recentJobs' => $recentJobs,
+      'tags' => $tags,
     ]);
   }
 

@@ -18,10 +18,11 @@ class JobFactory extends Factory
   public function definition(): array
   {
     $city = fake()->city() . ', ' . fake()->stateAbbr();
+    $salary = "$" . random_int(25, 89) . ",000 USD";
     return [
-      'employer_id' => Employer::factory(),
+      'employer_id' => Employer::InRandomOrder()->first()->id,
       'title' => fake()->jobTitle(),
-      'salary' => fake()->randomElement(['$33,000 USD', '$40,000 USD', '$45,000 USD', '$50,000 USD', '$52,000 USD', '$56,000 USD', '$61,000 USD', '$73,000 USD']),
+      'salary' => $salary,
       'location' => fake()->randomElement(['Remote', $city]),
       'schedule' => fake()->randomElement(['Full-time', 'Part-time', 'Contract']),
       'url' => fake()->url(),

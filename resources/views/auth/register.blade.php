@@ -12,6 +12,8 @@
     <x-forms.input label="Employer Name:" name="employer" />
     <x-forms.input label="Employer Logo:" name="logo" type="file" />
 
+    <x-forms.divider />
+
     <div class="flex justify-center">
       <x-forms.button>Create Account</x-forms.button>
     </div>

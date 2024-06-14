@@ -34,9 +34,18 @@
         <a href="">Companies</a>
       </div>
 
-      <div class="">
-        <a href="">Post a Job</a>
-      </div>
+      @auth
+        <div class="">
+          <a href="/jobs/create">Post a Job</a>
+        </div>
+      @endauth
+
+      @guest
+        <div class="space-x-4 font-bold">
+          <a href="/login">Login</a>
+          <a href="/register">Register</a>
+        </div>
+      @endguest
     </nav>
 
     <main class="mt-10 max-w-[986px] mx-auto">
