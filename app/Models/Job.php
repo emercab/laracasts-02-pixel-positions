@@ -30,6 +30,20 @@ class Job extends Model
 
   public function tags(): BelongsToMany
   {
-    return $this->belongsToMany(Tag::class);
+    return $this->belongsToMany(Tag::class, 'job_tag');
+  }
+
+
+  public function tag(string $name): void
+  {
+    $tag = Tag::firstOrCreate(['name' => $name]);
+    $this->tags()->attach($tag);
+  }
+
+
+  public function limitedTags($limit = 3): BelongsToMany
+  {
+    return $this->belongsToMany(Tag::class, 'job_tag')
+      ->limit($limit);
   }
 }
